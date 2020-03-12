@@ -1,38 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fractol.h                                          :+:      :+:    :+:   */
+/*   key_hooks.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abeulah <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/03/11 15:00:09 by abeulah           #+#    #+#             */
-/*   Updated: 2020/03/11 15:00:11 by abeulah          ###   ########.fr       */
+/*   Created: 2020/03/12 14:48:17 by abeulah           #+#    #+#             */
+/*   Updated: 2020/03/12 14:48:18 by abeulah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FRACTOL_H
+#include "fractol.h"
 
-# define FRACTOL_H
-
-# include <math.h>
-# include "../libft/src/libft.h"
-# include "../minilibx_macos/mlx.h"
-
-typedef struct		s_fr
+static void	destroy(t_fr *fr)
 {
-	int				width;
-	int				height;
-	int				bpp;
-	int				size;
-	int				endian;
-	void			*mlx;
-	void			*win;
-	void			*img;
-	int				zm;
-	char			*line;
-}					t_fr;
+	mlx_destroy_window(fr->mlx, fr->win);
+	mlx_destroy_image(fr->mlx, fr->img);
+	exit(0);
+}
 
-int					red_cross(void *fr);
-int					key_hooks(int key, void *fr);
+int			key_hooks(int key, void *fr)
+{
+	if (key == 53)
+		destroy(fr);
+	return (0);
+}
 
-#endif
+int			red_cross(void *fr)
+{
+	fr = 0;
+	exit(0);
+}
