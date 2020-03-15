@@ -1,29 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utilits.c                                          :+:      :+:    :+:   */
+/*   kind_of_fr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abeulah <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/03/12 15:32:02 by abeulah           #+#    #+#             */
-/*   Updated: 2020/03/12 15:32:03 by abeulah          ###   ########.fr       */
+/*   Created: 2020/03/15 09:00:10 by abeulah           #+#    #+#             */
+/*   Updated: 2020/03/15 09:00:13 by abeulah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-t_point create_cmplx(double re, double im)
+double	mandelbrot(t_point c, t_point z, int max_iter)
 {
-	t_point a;
+	int		iter;
 
-	a.re = re;
-	a.im = im;
-	return (a);
-}
-
-void	iferror(int f)
-{
-	if (f == 1)
-		ft_putstr("MLX returned NULL!\n");
-	exit(0);
+	iter = 0;
+	while (pow(z.re, 2) + pow(z.im, 2) <= 4 && iter < max_iter)
+	{
+		z = create_cmplx(pow(z.re, 2) - pow(z.im, 2) + c.re,
+						 2.0 * z.re * z.im + c.im);
+		iter++;
+	}
+	return ((double)iter / (double)max_iter);
 }

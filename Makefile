@@ -8,7 +8,9 @@ HEADER_LIST = fractol.h\
 
 SRC_LIST = fractol.c\
     key_hooks.c\
-    utilits.c
+    utilits.c\
+    kind_of_fr.c\
+    put_pixel.c
 
 HEADERS = $(addprefix $(SRC_DIR), $(HEADER_LIST))
 SRC = $(addprefix $(SRC_DIR), $(SRC_LIST))

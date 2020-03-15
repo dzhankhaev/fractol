@@ -23,6 +23,8 @@ int			key_hooks(int key, void *fr)
 {
 	if (key == 53)
 		destroy(fr);
+	else if (key == 123)
+		put_pixel(fr);
 	return (0);
 }
 

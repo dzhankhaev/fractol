@@ -45,5 +45,10 @@ int					red_cross(void *fr);
 int					key_hooks(int key, void *fr);
 
 t_point				create_cmplx(double re, double im);
+void				iferror(int f);
+
+double				mandelbrot(t_point c, t_point z, int max_iter);
+
+void				put_pixel(t_fr *fr);
 
 #endif
