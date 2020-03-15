@@ -18,6 +18,12 @@
 # include "../libft/src/libft.h"
 # include "../minilibx_macos/mlx.h"
 
+typedef struct		s_point
+{
+	double			re;
+	double			im;
+}					t_point;
+
 typedef struct		s_fr
 {
 	int				width;
@@ -30,9 +36,14 @@ typedef struct		s_fr
 	void			*img;
 	int				zm;
 	char			*line;
+	t_point			min;
+	t_point			max;
+	t_point			ms;
 }					t_fr;
 
 int					red_cross(void *fr);
 int					key_hooks(int key, void *fr);
+
+t_point				create_cmplx(double re, double im);
 
 #endif
