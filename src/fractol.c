@@ -12,8 +12,6 @@
 
 #include "fractol.h"
 
-#include <stdio.h>
-
 static void	init(t_fr *fr)
 {
 	if (!(fr->mlx = mlx_init()))
@@ -30,7 +28,7 @@ static void	init(t_fr *fr)
 	fr->max.re = 2;
 	fr->max.im = fr->min.im + (fr->max.re - fr->min.re)
 			* fr->height / fr->width;
-	fr->ms = create_cmplx((fr->max.re - fr->min.re) / (fr->width - 1),
+	fr->f = create_cmplx((fr->max.re - fr->min.re) / (fr->width - 1),
 			(fr->max.im - fr->min.im) / (fr->height - 1));
 }
 
@@ -43,6 +41,7 @@ int			main(void)
 	init(&fr);
 	mlx_hook(fr.win, 17, 0, red_cross, (void *)&fr);
 	mlx_key_hook(fr.win, key_hooks, (void *)&fr);
+	mlx_mouse_hook(fr.win, mouse_hooks, (void *)&fr);
 	mlx_loop(fr.mlx);
 	return (0);
 }

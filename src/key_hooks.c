@@ -25,6 +25,10 @@ int			key_hooks(int key, void *fr)
 		destroy(fr);
 	else if (key == 123)
 		put_pixel(fr);
+	else if (key == 124)
+		clear_win(fr);
+//	else if (key == 125)
+//		put_pixel(fr);
 	return (0);
 }
 

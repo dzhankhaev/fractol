@@ -14,6 +14,7 @@
 
 # define FRACTOL_H
 
+# include <stdio.h>
 # include <math.h>
 # include "../libft/src/libft.h"
 # include "../minilibx_macos/mlx.h"
@@ -38,13 +39,16 @@ typedef struct		s_fr
 	char			*line;
 	t_point			min;
 	t_point			max;
-	t_point			ms;
+	t_point			f;
 }					t_fr;
 
 int					red_cross(void *fr);
 int					key_hooks(int key, void *fr);
 
+int					mouse_hooks(int button, int x, int y, void *fr);
+
 t_point				create_cmplx(double re, double im);
+void				clear_win(t_fr *fr);
 void				iferror(int f);
 
 double				mandelbrot(t_point c, t_point z, int max_iter);
