@@ -99,30 +99,3 @@ void		init_arg_3(t_fr *fr)
 	if (ret != CL_SUCCESS)
 		iferror("ERROR init_arguments.c init_arg_3 clSetKernelArg\n");
 }
-
-/*
-
-void		init_arg_3(t_fr *fr)
-{
-	t_opcl		*opcl;
-	cl_int		ret;
-
-	opcl = &fr->opcl;
-	opcl->memlenth_tl = 4 * fr->height * fr->width;
-	if (!(opcl->mem_tl = (char *)malloc(sizeof(char)
-			* opcl->memlenth_tl)))
-		iferror("ERROR init_arguments.c init_arg_3 malloc\n");
-	opcl->memobj_tl = clCreateBuffer(opcl->context, CL_MEM_READ_WRITE,
-			opcl->memlenth_tl * sizeof(char), NULL, &ret);
-	if (ret != CL_SUCCESS)
-		iferror("ERROR init_arguments.c init_arg_3 clCreateBuffer\n");
-	ret = clEnqueueWriteBuffer(opcl->command_queue, opcl->memobj_tl, CL_TRUE,
-							   0, opcl->memlenth_tl * sizeof(char),
-							   opcl->mem_tl, 0, NULL, NULL);
-	if (ret != CL_SUCCESS)
-		iferror("ERROR init_arguments.c init_arg_3 clEnqueueWriteBuffer\n");
-	ret = clSetKernelArg(opcl->kernel, 2, sizeof(cl_mem),
-						 (void *)&opcl->memobj_tl);
-	if (ret != CL_SUCCESS)
-		iferror("ERROR init_arguments.c init_arg_3 clSetKernelArg\n");
-}*/

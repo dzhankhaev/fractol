@@ -38,6 +38,22 @@ static void	display_pix(t_fr *fr)
 	mlx_put_image_to_window(fr->mlx, fr->win, fr->img, 0, 0);
 }
 
+static void	free_all_alloc_mem(t_fr *fr)
+{
+	t_opcl	*opcl;
+
+	opcl = &fr->opcl;
+	free(opcl->mem_tl);
+	free(opcl->mem_w_mi);
+	free(opcl->mem_c);
+	if ((clReleaseMemObject(opcl->memobj_w_mi)) != CL_SUCCESS)
+		iferror("ERROR put_pixel.c free_all_alloc_mem clReleaseMemObject1\n");
+	if ((clReleaseMemObject(opcl->memobj_c)) != CL_SUCCESS)
+		iferror("ERROR put_pixel.c free_all_alloc_mem clReleaseMemObject2\n");
+	if ((clReleaseMemObject(opcl->memobj_tl)) != CL_SUCCESS)
+		iferror("ERROR put_pixel.c free_all_alloc_mem clReleaseMemObject3\n");
+}
+
 void		put_pixel(t_fr *fr)
 {
 	t_opcl	*opcl;
@@ -58,9 +74,6 @@ void		put_pixel(t_fr *fr)
 			opcl->mem_tl, 0, NULL, NULL);
 	if (ret != CL_SUCCESS)
 		iferror("ERROR put_pixel.c put_pixel clEnqueueReadBuffer\n");
-//	clear_win(fr);
 	display_pix(fr);
-	free(opcl->mem_tl);
-	free(opcl->mem_w_mi);
-	free(opcl->mem_c);
+	free_all_alloc_mem(fr);
 }

@@ -1,9 +1,9 @@
-#define WIDTH w_mi[0]
-#define MAX_ITER w_mi[1]
-#define MIN_RE c[0]
-#define MAX_IM c[1]
-#define F_RE c[2]
-#define F_IM c[3]
+#define WIDTH		w_mi[0]
+#define MAX_ITER	w_mi[1]
+#define MIN_RE		c[0]
+#define MAX_IM		c[1]
+#define F_RE		c[2]
+#define F_IM		c[3]
 
 void			color(int **line, double t, int k);
 

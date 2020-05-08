@@ -1,9 +1,10 @@
 NAME = fractol
 
 FLAGS = #-Wall -Werror -Wextra
-XFLAGS = -lOpenCL -L -lmlx -lXext -lX11
+XFLAGS = -lOpenCL -L -lmlx -lXext -lX11 -lm
 
 HEADER_LIST = fractol.h\
+	key_defines.h\
 
 
 SRC_LIST = fractol.c\
