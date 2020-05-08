@@ -37,15 +37,15 @@ typedef struct			s_opcl
 	cl_kernel			kernel;
 	cl_command_queue	command_queue;
 	cl_context			context;
-	cl_int				*mem_w_h;
-	cl_mem				memobj_w_h;
-	cl_int				memlenth_w_h;
-	cl_double			*mem_min_max_f;
-	cl_mem				memobj_min_max_f;
-	cl_int				memlenth_min_max_f;
-	cl_int				*mem_max_iter;
-	cl_mem				memobj_max_iter;
-	cl_int				memlenth_max_iter;
+	cl_int				*mem_w_mi;
+	cl_mem				memobj_w_mi;
+	cl_int				memlenth_w_mi;
+	cl_double			*mem_c;
+	cl_mem				memobj_c;
+	cl_int				memlenth_c;
+	cl_int				*mem_tl;
+	cl_mem				memobj_tl;
+	cl_int				memlenth_tl;
 }						t_opcl;
 
 typedef struct			s_point
@@ -90,6 +90,8 @@ void					init_opcl(t_fr *fr);
 
 void					init_arg_1(t_fr *fr);
 void					init_arg_2(t_fr *fr);
+void					set_arg_1(t_fr *fr);
+void					set_arg_2(t_fr *fr);
 void					init_arg_3(t_fr *fr);
 
 #endif

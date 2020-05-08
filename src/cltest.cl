@@ -1,29 +1,46 @@
-/*
-static void	color(double t, t_fr *fr, int x, int y)
-{
-	char	*temp;
-	int		r;
-	int		g;
-	int		b;
+#define WIDTH w_mi[0]
+#define MAX_ITER w_mi[1]
+#define MIN_RE c[0]
+#define MAX_IM c[1]
+#define F_RE c[2]
+#define F_IM c[3]
 
-	r = (int)(9 * (1 - t) * pow(t, 3) * 255);
-	g = (int)(15 * pow((1 - t), 2) * pow(t, 2) * 255);
-	b = (int)(8.5 * pow((1 - t), 3) * t * 255);
-	if (y < fr->height && x < fr->width)
+void			color(int **line, double t, int k);
+
+__kernel void	test(__global int *w_mi, __global double *c,
+		__global int *line)
+{
+	int		gid;
+	int		iter;
+	int		x;
+	int		y;
+	double	cre;
+	double	cim;
+	double	zre;
+	double	zim;
+	double	temp;
+
+	gid = get_global_id(0);
+	y = gid / WIDTH;
+	x = gid % WIDTH;
+	cim = MAX_IM - y * F_IM; /* gid / WIDTH = y */
+	cre = MIN_RE + x * F_RE; /* gid % WIDTH = x */
+	iter = 0;
+	zre = cre;
+	zim = cim;
+	while (zre * zre + zim * zim <= 4 && iter < MAX_ITER)
 	{
-		temp = (char *) (fr->line + (y * 4 * fr->width));
-		temp[x * 4] = (char) b;
-		temp[x * 4 + 1] = (char) g;
-		temp[x * 4 + 2] = (char) r;
+		temp = zre;
+		zre = zre * zre - zim * zim + cre;
+		zim = 2.0 * temp * zim + cim;
+		iter++;
 	}
+	color(&line, (double)iter / (double)MAX_ITER, x * 3 + y * 3 * WIDTH);
 }
 
- */
-
-__kernel void test(__global int *w_h, __global double *min_max_f,
-				   __global int *max_iter)
+void			color(int **line, double t, int k)
 {
-	int gid = get_global_id(0);
-	min_max_f[gid] += gid + 1;
-	max_iter[0] = 33;
+	line[0][k + 2] = (int)(9 * (1 - t) * t * t * t * 255);
+	line[0][k + 1] = (int)(15 * (1 - t) * (1 - t) * t * t * 255);
+	line[0][k] = (int)(8.5 * (1 - t) * (1 - t) * (1 - t) * t * 255);
 }

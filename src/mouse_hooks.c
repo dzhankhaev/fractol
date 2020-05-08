@@ -12,33 +12,28 @@
 
 #include "fractol.h"
 
-static void	button_4(t_fr *fr, int x, int y)
+int			mouse_hooks(int button, int x, int y, void *fr_temp)
 {
 	t_point	xy;
+	double	zoom;
+	t_fr	*fr;
 
-//	xy = create_cmplx(fr->min.re + x * fr->f.re, fr->max.im - y * fr->f.im);
-
+	fr = (t_fr *)fr_temp;
 	xy = create_cmplx(
 			(double)x / (fr->width / (fr->max.re - fr->min.re))
 			+ fr->min.re,
 			(double)y / (fr->height / (fr->max.im - fr->min.im))
 			* -1 + fr->max.im);
-
-	fr->max.re = xy.re + (fr->max.re - xy.re) * 0.9;
-	fr->min.re = xy.re + (fr->min.re - xy.re) * 0.9;
-	fr->max.im = xy.im + (fr->max.im - xy.im) * 0.9;
-	fr->min.im = xy.im + (fr->min.im - xy.im) * 0.9;
+	if (button == 4)
+		zoom = 0.9;
+	else if (button == 5)
+		zoom = 1.1;
+	fr->max.re = xy.re + (fr->max.re - xy.re) * zoom;
+	fr->min.re = xy.re + (fr->min.re - xy.re) * zoom;
+	fr->max.im = xy.im + (fr->max.im - xy.im) * zoom;
+	fr->min.im = xy.im + (fr->min.im - xy.im) * zoom;
 	fr->f = create_cmplx((fr->max.re - fr->min.re) / (fr->width - 1),
 						 (fr->max.im - fr->min.im) / (fr->height - 1));
-
 	put_pixel(fr);
-}
-
-int			mouse_hooks(int button, int x, int y, void *fr)
-{
-	if (button == 4)
-		button_4(fr, x, y);
-//	else if (button == 5)
-//		button_5(fdf);
 	return (0);
 }

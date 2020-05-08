@@ -48,6 +48,4 @@ void			init_opcl(t_fr *fr)
 	if (ret != CL_SUCCESS)
 		iferror("ERROR init_opcl.c init_opcl clCreateCommandQueue\n");
 	create_kernel(opcl, device_id);
-	init_arg_1(fr); /*1 - параметры длины и ширины окна. Неизменяемые*/
-	init_arg_3(fr); /*2 - максимальное количество итераций. Пока неизменяемый*/
 }
