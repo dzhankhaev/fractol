@@ -41,7 +41,7 @@ int			main(void)
 
 	init(&fr);
 	init_opcl(&fr);
-	mlx_hook(fr.win, 17, 0, red_cross, (void *)&fr);
+	mlx_hook(fr.win, 17, 1L<<17, red_cross, (void *)&fr);
 	mlx_key_hook(fr.win, key_hooks, (void *)&fr);
 	mlx_mouse_hook(fr.win, mouse_hooks, (void *)&fr);
 	mlx_loop(fr.mlx);

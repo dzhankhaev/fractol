@@ -2,9 +2,12 @@
 
 # define KEY_DEFINES_H
 
-# define UP		65362
-# define DOWN	65364
-# define RIGHT	65363
-# define LEFT	65361
+# define UP		0xff52
+# define DOWN	0xff54
+# define RIGHT	0xff53
+# define LEFT	0xff51
+# define ESC	0xff1b
+# define MINUS	0xffad
+# define PLUS	0xffab
 
 #endif

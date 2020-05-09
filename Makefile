@@ -10,7 +10,6 @@ HEADER_LIST = fractol.h\
 SRC_LIST = fractol.c\
     key_hooks.c\
     utilits.c\
-    kind_of_fr.c\
     put_pixel.c\
     mouse_hooks.c\
     init_opcl.c\

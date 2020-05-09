@@ -71,3 +71,9 @@ char	*ft_copy(char *buf, int length)
 	a[i] = '\0';
 	return (a);
 }
+
+void	set_new_values(double *a, double *b, double d)
+{
+	*a += d * 0.05;
+	*b += d * 0.05;
+}

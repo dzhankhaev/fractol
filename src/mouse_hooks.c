@@ -12,6 +12,47 @@
 
 #include "fractol.h"
 
+int			red_cross(void *fr)
+{
+	fr = 0;
+	exit(0);
+}
+/*
+static double	set_zoom(int button, double max, double min)
+{
+	double	zoom;
+
+	zoom = 1;
+	if (button == 4 && ())
+		zoom = 0.9;
+	else if (button == 5 && fabs(max) + fabs(min) < 5.0)
+		zoom = 1.1;
+	return (zoom);
+}*/
+static double	set_zoom(int button, t_fr *fr, t_point xy)
+{
+	double	zoom;
+	t_point	new_val[2];
+
+	zoom = 1;
+	if (button == 4)
+		zoom = 0.9;
+	else if (button == 5)
+	{
+		zoom = 1.1;
+		new_val[0] = create_cmplx(fr->max.re, fr->max.im);
+		new_val[1] = create_cmplx(fr->min.re, fr->min.im);
+		new_val[0].re = xy.re + (fr->max.re - xy.re) * zoom;
+		new_val[1].re = xy.re + (fr->min.re - xy.re) * zoom;
+		new_val[0].im = xy.im + (fr->max.im - xy.im) * zoom;
+		new_val[1].im = xy.im + (fr->min.im - xy.im) * zoom;
+		if (new_val[0].re > 5 || new_val[1].re < -5
+				 || new_val[0].im > 5 || new_val[1].im < -5)
+			zoom = 1;
+	}
+	return (zoom);
+}
+
 int			mouse_hooks(int button, int x, int y, void *fr_temp)
 {
 	t_point	xy;
@@ -26,10 +67,7 @@ int			mouse_hooks(int button, int x, int y, void *fr_temp)
 				+ fr->min.re,
 				(double) y / (fr->height / (fr->max.im - fr->min.im))
 				* -1 + fr->max.im);
-		if (button == 4)
-			zoom = 0.9;
-		else if (button == 5)
-			zoom = 1.1;
+		zoom = set_zoom(button, fr, xy);
 		fr->max.re = xy.re + (fr->max.re - xy.re) * zoom;
 		fr->min.re = xy.re + (fr->min.re - xy.re) * zoom;
 		fr->max.im = xy.im + (fr->max.im - xy.im) * zoom;

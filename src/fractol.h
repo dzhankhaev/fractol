@@ -81,8 +81,7 @@ t_point					create_cmplx(double re, double im);
 void					clear_win(t_fr *fr);
 void					iferror(char *s);
 char					*ft_copy(char *buf, int length);
-
-double					mandelbrot(t_point c, t_point z, int max_iter);
+void					set_new_values(double *a, double *b, double d);
 
 void					put_pixel(t_fr *fr);
 
