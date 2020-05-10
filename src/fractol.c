@@ -12,6 +12,18 @@
 
 #include "fractol.h"
 
+static void	fr_name(t_fr *fr, char *name)
+{
+	if (ft_strequ("mandelbrot", name))
+		fr->fr_name = 0;
+	else if (ft_strequ("burning ship", name))
+		fr->fr_name = 1;
+	else if (ft_strequ("celtic mandelbrot", name))
+		fr->fr_name = 2;
+	else
+		iferror("Invalid arguments!\n");
+}
+
 static void	init(t_fr *fr)
 {
 	fr->width = 1000;
@@ -35,11 +47,14 @@ static void	init(t_fr *fr)
 	fr->max_iter = 100;
 }
 
-int			main(void)
+int			main(int argc, char **argv)
 {
 	t_fr	fr;
 
+	if (argc != 2)
+		iferror("Invalid arguments!\n");
 	init(&fr);
+	fr_name(&fr, argv[1]);
 	init_opcl(&fr);
 	mlx_hook(fr.win, 17, 1L<<17, red_cross, (void *)&fr);
 	mlx_key_hook(fr.win, key_hooks, (void *)&fr);

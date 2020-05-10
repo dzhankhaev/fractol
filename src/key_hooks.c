@@ -71,7 +71,5 @@ int				key_hooks(int key, void *fr_temp)
 		button_move(key, fr);
 	else if (key == MINUS || key == PLUS)
 		change_iter(key, fr);
-//	else if (key == 125)
-//		put_pixel(fr);
 	return (0);
 }

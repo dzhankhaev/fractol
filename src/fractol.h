@@ -70,6 +70,7 @@ typedef struct			s_fr
 	t_point				f;
 	t_opcl				opcl;
 	int					max_iter;
+	int					fr_name;
 }						t_fr;
 
 int						red_cross(void *fr);
@@ -78,9 +79,9 @@ int						key_hooks(int key, void *fr);
 int						mouse_hooks(int button, int x, int y, void *fr);
 
 t_point					create_cmplx(double re, double im);
-void					clear_win(t_fr *fr);
+int						ft_strequ(char *s, char *ss);
 void					iferror(char *s);
-char					*ft_copy(char *buf, int length);
+char					*ft_copy(char *buf, int length, int f);
 void					set_new_values(double *a, double *b, double d);
 
 void					put_pixel(t_fr *fr);

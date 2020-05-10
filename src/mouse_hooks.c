@@ -40,7 +40,7 @@ static double	set_zoom(int button, t_fr *fr, t_point xy)
 {
 	if (button == 4)
 	{
-		if (fr->f.re < 1e-17 || fr->f.im < 1e-17)
+		if (fr->f.re < 1e-16 || fr->f.im < 1e-16)
 			return (1);
 		return (0.9);
 	}

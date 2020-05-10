@@ -20,7 +20,6 @@ SRC = $(addprefix $(SRC_DIR), $(SRC_LIST))
 SRC_DIR = ./src/
 OBJ = $(addprefix $(OBJ_DIR), $(SRC_LIST:.c=.o))
 OBJ_DIR = ./obj/
-CLFILE = $(addprefix $(SRC_DIR), cltest.cl)
 
 LIBX = $(LIBX_DIR)libmlx.a
 LIBX_DIR = ./minilibx/
@@ -33,7 +32,7 @@ $(NAME): $(OBJ_DIR) $(OBJ) #							 $(LIBX)
 $(OBJ_DIR):
 	@mkdir -p $(OBJ_DIR)
 
-$(OBJ_DIR)%.o : $(SRC_DIR)%.c  $(HEADERS) $(CLFILE)
+$(OBJ_DIR)%.o : $(SRC_DIR)%.c  $(HEADERS)
 	@gcc -c $< -o $@ $(FLAGS)
 
 $(LIBX):

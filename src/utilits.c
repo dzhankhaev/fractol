@@ -31,30 +31,21 @@ void	iferror(char *s)
 	exit(0);
 }
 
-void	clear_win(t_fr *fr)
+int			ft_strequ(char *s, char *ss)
 {
-	int		x;
-	int 	y;
-	char	*temp;
+	int		i;
 
-	y = 0;
-	while (y < fr->height)
+	i = 0;
+	while (s[i] == ss[i])
 	{
-		x = 0;
-		while (x < fr->width)
-		{
-			temp = (char *) (fr->line + (y * 4 * fr->width));
-			temp[x * 4] = (char)0;
-			temp[x * 4 + 1] = (char)0;
-			temp[x * 4 + 2] = (char)0;
-			x++;
-		}
-		y++;
+		if (s[i] == '\0' && ss[i] == '\0')
+			return (1);
+		i++;
 	}
-	mlx_put_image_to_window(fr->mlx, fr->win, fr->img, 0, 0);
+	return (0);
 }
 
-char	*ft_copy(char *buf, int length)
+char	*ft_copy(char *buf, int length, int f)
 {
 	char	*a;
 	int		i;
