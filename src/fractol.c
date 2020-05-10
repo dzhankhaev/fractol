@@ -14,8 +14,8 @@
 
 static void	init(t_fr *fr)
 {
-	fr->width = 1080;
-	fr->height = 1080;
+	fr->width = 1000;
+	fr->height = 1000;
 	if (!(fr->mlx = mlx_init()))
 		iferror("ERROR fractol.c init_mlx mlx_init\n");
 	if (!(fr->win = mlx_new_window(fr->mlx, fr->width, fr->height, "fractol")))
