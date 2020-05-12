@@ -1,11 +1,10 @@
 NAME = fractol
 
-FLAGS = #-Wall -Werror -Wextra
+FLAGS = -Wall -Werror -Wextra
 XFLAGS = -lOpenCL -L -lmlx -lXext -lX11 -lm
 
 HEADER_LIST = fractol.h\
 	key_defines.h\
-
 
 SRC_LIST = fractol.c\
     key_hooks.c\
@@ -26,7 +25,7 @@ LIBX_DIR = ./minilibx/
 
 all: $(NAME)
 
-$(NAME): $(OBJ_DIR) $(OBJ) #							 $(LIBX)
+$(NAME): $(OBJ_DIR) $(OBJ) $(LIBX)
 	@gcc $(OBJ) $(LIBX) $(FLAGS) $(XFLAGS) -o $(NAME)
 
 $(OBJ_DIR):
@@ -40,7 +39,7 @@ $(LIBX):
 
 clean:
 	@rm -rf $(OBJ_DIR)
-#	@make -C $(LIBX_DIR) clean
+	@make -C $(LIBX_DIR) clean
 
 fclean: clean
 	@rm -f $(NAME)

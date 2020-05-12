@@ -27,13 +27,13 @@ static void		read_cl_files(t_opcl *opcl)
 		iferror("ERROR init_opcl.c read_cl_files open1\n");
 	source_length = read(fd, buf, 3000);
 	close(fd);
-	if (!(source_str[0] = ft_copy(buf, source_length, 0)))
+	if (!(source_str[0] = ft_copy(buf, source_length)))
 		iferror("ERROR init_opcl.c read_cl_files ft_copy1\n");
 	if ((fd = open("src/cl_fractals.cl", O_RDONLY)) < 1)
 		iferror("ERROR init_opcl.c read_cl_files open2\n");
 	source_length = read(fd, buf, 3000);
 	close(fd);
-	if (!(source_str[1] = ft_copy(buf, source_length, 1)))
+	if (!(source_str[1] = ft_copy(buf, source_length)))
 		iferror("ERROR init_opcl.c read_cl_files ft_copy2\n");
 	opcl->program = clCreateProgramWithSource(opcl->context, 2,
 			(const char **)source_str, 0, &ret);

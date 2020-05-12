@@ -45,7 +45,7 @@ int			ft_strequ(char *s, char *ss)
 	return (0);
 }
 
-char	*ft_copy(char *buf, int length, int f)
+char	*ft_copy(char *buf, int length)
 {
 	char	*a;
 	int		i;

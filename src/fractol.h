@@ -20,6 +20,7 @@
 # define CL_USE_DEPRECATED_OPENCL_2_0_APIS
 # define CL_USE_DEPRECATED_OPENCL_2_1_APIS
 # define CL_USE_DEPRECATED_OPENCL_3_0_APIS
+# define FIRST	-1
 
 # include <CL/cl.h>
 # include <fcntl.h>
@@ -74,7 +75,6 @@ typedef struct			s_fr
 	int					fr_name;
 }						t_fr;
 
-int						red_cross(void *fr);
 int						key_hooks(int key, void *fr);
 
 int						mouse_hooks(int button, int x, int y, void *fr);
@@ -83,7 +83,7 @@ int						mousemove_hook(int x, int y, void *fr_temp);
 t_point					create_cmplx(double re, double im);
 int						ft_strequ(char *s, char *ss);
 void					iferror(char *s);
-char					*ft_copy(char *buf, int length, int f);
+char					*ft_copy(char *buf, int length);
 void					set_new_values(double *a, double *b, double d);
 
 void					put_pixel(t_fr *fr);

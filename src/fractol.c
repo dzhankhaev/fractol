@@ -47,6 +47,7 @@ static void	init(t_fr *fr)
 	fr->f = create_cmplx((fr->max.re - fr->min.re) / (fr->width - 1),
 			(fr->max.im - fr->min.im) / (fr->height - 1));
 	fr->max_iter = 100;
+	fr->julia_k.re = FIRST;
 }
 
 int			main(int argc, char **argv)
@@ -58,7 +59,6 @@ int			main(int argc, char **argv)
 	init(&fr);
 	fr_name(&fr, argv[1]);
 	init_opcl(&fr);
-	mlx_hook(fr.win, 17, 1L << 17, red_cross, (void *)&fr);
 	mlx_hook(fr.win, 6, 1L << 6, mousemove_hook, (void *)&fr);
 	mlx_key_hook(fr.win, key_hooks, (void *)&fr);
 	mlx_mouse_hook(fr.win, mouse_hooks, (void *)&fr);
