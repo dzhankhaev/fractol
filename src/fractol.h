@@ -68,6 +68,7 @@ typedef struct			s_fr
 	t_point				min;
 	t_point				max;
 	t_point				f;
+	t_point				julia_k;
 	t_opcl				opcl;
 	int					max_iter;
 	int					fr_name;
@@ -77,6 +78,7 @@ int						red_cross(void *fr);
 int						key_hooks(int key, void *fr);
 
 int						mouse_hooks(int button, int x, int y, void *fr);
+int						mousemove_hook(int x, int y, void *fr_temp);
 
 t_point					create_cmplx(double re, double im);
 int						ft_strequ(char *s, char *ss);

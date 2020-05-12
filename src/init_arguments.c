@@ -47,6 +47,8 @@ void		set_arg_2(t_fr *fr)
 	opcl->mem_c[1] = fr->max.im;
 	opcl->mem_c[2] = fr->f.re;
 	opcl->mem_c[3] = fr->f.im;
+	opcl->mem_c[4] = fr->julia_k.re;
+	opcl->mem_c[5] = fr->julia_k.im;
 	ret = clEnqueueWriteBuffer(opcl->command_queue,
 							   opcl->memobj_c, CL_TRUE, 0,
 							   opcl->memlenth_c * sizeof(cl_double),
@@ -61,7 +63,7 @@ void		init_arg_2(t_fr *fr)
 	cl_int		ret;
 
 	opcl = &fr->opcl;
-	opcl->memlenth_c = 4;
+	opcl->memlenth_c = 6;
 	if (!(opcl->mem_c = (cl_double *)malloc(sizeof(cl_double)
 			* opcl->memlenth_c)))
 		iferror("ERROR init_arguments.c init_arg_2 malloc\n");

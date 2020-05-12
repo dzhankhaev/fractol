@@ -18,6 +18,27 @@ int			red_cross(void *fr)
 	exit(0);
 }
 
+int		mousemove_hook(int x, int y, void *fr_temp)
+{
+	t_fr	*fr;
+	static int c = 0;
+
+	c++;
+	if (c == 1000)
+		c = 0;
+	if (c % 10 != 0)
+		return (0);
+
+	fr = (t_fr *)fr_temp;
+	if (fr->fr_name == 3)
+	{
+		fr->julia_k = create_cmplx(((double)x / fr->width - 0.5),
+				((double)(fr->height - y) / fr->height - 0.5));
+		put_pixel(fr);
+	}
+	return (0);
+}
+
 static int		check_down(t_fr *fr, t_point xy)
 {
 	t_point	new_val[2];

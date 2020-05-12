@@ -20,6 +20,8 @@ static void	fr_name(t_fr *fr, char *name)
 		fr->fr_name = 1;
 	else if (ft_strequ("celtic mandelbrot", name))
 		fr->fr_name = 2;
+	else if (ft_strequ("julia", name))
+		fr->fr_name = 3;
 	else
 		iferror("Invalid arguments!\n");
 }
@@ -56,7 +58,8 @@ int			main(int argc, char **argv)
 	init(&fr);
 	fr_name(&fr, argv[1]);
 	init_opcl(&fr);
-	mlx_hook(fr.win, 17, 1L<<17, red_cross, (void *)&fr);
+	mlx_hook(fr.win, 17, 1L << 17, red_cross, (void *)&fr);
+	mlx_hook(fr.win, 6, 1L << 6, mousemove_hook, (void *)&fr);
 	mlx_key_hook(fr.win, key_hooks, (void *)&fr);
 	mlx_mouse_hook(fr.win, mouse_hooks, (void *)&fr);
 	mlx_loop(fr.mlx);
