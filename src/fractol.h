@@ -72,7 +72,8 @@ typedef struct			s_fr
 	t_point				julia_k;
 	t_opcl				opcl;
 	int					max_iter;
-	int					fr_name;
+	int					name;
+	int					color;
 }						t_fr;
 
 int						key_hooks(int key, void *fr);

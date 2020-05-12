@@ -60,6 +60,17 @@ static void		change_iter(int key, t_fr *fr)
 	put_pixel(fr);
 }
 
+static void		change_color(int key, t_fr *fr)
+{
+	if (key == ONE)
+		fr->color = 1;
+	else if (key == TWO)
+		fr->color = 2;
+	else if (key == THREE)
+		fr->color = 3;
+	put_pixel(fr);
+}
+
 int				key_hooks(int key, void *fr_temp)
 {
 	t_fr *fr;
@@ -71,5 +82,7 @@ int				key_hooks(int key, void *fr_temp)
 		button_move(key, fr);
 	else if (key == MINUS || key == PLUS)
 		change_iter(key, fr);
+	else if (key == ONE || key == TWO || key == THREE)
+		change_color(key, fr);
 	return (0);
 }

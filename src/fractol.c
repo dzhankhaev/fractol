@@ -12,18 +12,21 @@
 
 #include "fractol.h"
 
-static void	fr_name(t_fr *fr, char *name)
+static void	fr_name(t_fr *fr, int argc, char *name)
 {
-	if (ft_strequ("mandelbrot", name))
-		fr->fr_name = 0;
-	else if (ft_strequ("burning ship", name))
-		fr->fr_name = 1;
-	else if (ft_strequ("celtic mandelbrot", name))
-		fr->fr_name = 2;
-	else if (ft_strequ("julia", name))
-		fr->fr_name = 3;
-	else
+	if (argc != 2)
+	{
 		iferror("Invalid arguments!\n");
+
+	}
+	else if (ft_strequ("mandelbrot", name))
+		fr->name = 0;
+	else if (ft_strequ("burning ship", name))
+		fr->name = 1;
+	else if (ft_strequ("celtic mandelbrot", name))
+		fr->name = 2;
+	else if (ft_strequ("julia", name))
+		fr->name = 3;
 }
 
 static void	init(t_fr *fr)
@@ -48,16 +51,15 @@ static void	init(t_fr *fr)
 			(fr->max.im - fr->min.im) / (fr->height - 1));
 	fr->max_iter = 100;
 	fr->julia_k.re = FIRST;
+	fr->color = 1;
 }
 
 int			main(int argc, char **argv)
 {
 	t_fr	fr;
 
-	if (argc != 2)
-		iferror("Invalid arguments!\n");
+	fr_name(&fr, argc, argv[1]);
 	init(&fr);
-	fr_name(&fr, argv[1]);
 	init_opcl(&fr);
 	mlx_hook(fr.win, 6, 1L << 6, mousemove_hook, (void *)&fr);
 	mlx_key_hook(fr.win, key_hooks, (void *)&fr);
