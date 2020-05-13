@@ -27,8 +27,8 @@ int		mousemove_hook(int x, int y, void *fr_temp)
 			c = 0;
 		if (c % 5 != 0)
 			return (0);
-		fr->julia_k = create_cmplx(((double)x / fr->width),
-				((double)(fr->height - y) / fr->height));
+		fr->julia_k = create_cmplx(((double)x / fr->width - 1),
+				((double)(fr->height - y) / fr->height - 1));
 		put_pixel(fr);
 	}
 	return (0);

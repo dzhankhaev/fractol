@@ -98,7 +98,7 @@ static double	julia(double *args, int max_iter, int smooth)
 	{
 		temp = zre;
 		zre = zre * zre - zim * zim + K_RE;
-		zim = 2.0 * temp * zim + K_RE;
+		zim = 2.0 * temp * zim + K_IM;
 		iter++;
 	}
 	if (iter == max_iter || iter == 0)

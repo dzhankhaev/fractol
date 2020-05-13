@@ -7,8 +7,8 @@
 #define MAX_IM		c[1]
 #define F_RE		c[2]
 #define F_IM		c[3]
-#define K_RE		c[5]
-#define K_IM		c[6]
+#define K_RE		c[4]
+#define K_IM		c[5]
 
 double			iter_count(double *args, int max_iter, int fr_id, int smooth);
 
