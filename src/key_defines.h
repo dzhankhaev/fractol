@@ -12,5 +12,7 @@
 # define ESC	0xff1b
 # define MINUS	0xffad
 # define PLUS	0xffab
+# define SPACE	0x20
+# define TAB	0xff09
 
 #endif

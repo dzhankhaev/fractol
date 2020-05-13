@@ -10,6 +10,7 @@ void		set_arg_1(t_fr *fr)
 	opcl->mem_w_mi[1] = fr->max_iter;
 	opcl->mem_w_mi[2] = fr->name;
 	opcl->mem_w_mi[3] = fr->color;
+	opcl->mem_w_mi[4] = fr->smooth;
 	ret = clEnqueueWriteBuffer(opcl->command_queue, opcl->memobj_w_mi, CL_TRUE,
 							   0, opcl->memlenth_w_mi * sizeof(cl_int),
 							   opcl->mem_w_mi, 0, NULL, NULL);
@@ -23,7 +24,7 @@ void		init_arg_1(t_fr *fr)
 	t_opcl	*opcl;
 
 	opcl = &fr->opcl;
-	opcl->memlenth_w_mi = 4;
+	opcl->memlenth_w_mi = 5;
 	if (!(opcl->mem_w_mi = (cl_int *)malloc(sizeof(cl_int)
 										   * opcl->memlenth_w_mi)))
 		iferror("ERROR init_arguments.c init_arg_1 malloc\n");

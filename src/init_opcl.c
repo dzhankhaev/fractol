@@ -15,7 +15,7 @@ static void		free_tab(char **tab, int n)
 
 static void		read_cl_files(t_opcl *opcl)
 {
-	char				buf[2000];
+	char				buf[3000];
 	char				**source_str;
 	int					source_length;
 	int					fd;
@@ -25,7 +25,7 @@ static void		read_cl_files(t_opcl *opcl)
 		iferror("ERROR init_opcl.c read_cl_files malloc\n");
 	if ((fd = open("src/cl_main.cl", O_RDONLY)) < 1)
 		iferror("ERROR init_opcl.c read_cl_files open1\n");
-	source_length = read(fd, buf, 3000);
+	source_length = read(fd, buf, 2000);
 	close(fd);
 	if (!(source_str[0] = ft_copy(buf, source_length)))
 		iferror("ERROR init_opcl.c read_cl_files ft_copy1\n");

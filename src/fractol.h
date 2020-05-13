@@ -74,6 +74,7 @@ typedef struct			s_fr
 	int					max_iter;
 	int					name;
 	int					color;
+	int					smooth;
 }						t_fr;
 
 int						key_hooks(int key, void *fr);

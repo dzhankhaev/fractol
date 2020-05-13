@@ -48,7 +48,6 @@ static void		button_move(int key, t_fr *fr)
 	else if (key == UP)
 		set_new_values(&fr->min.im, &fr->max.im, d.im);
 	check_borders(fr, oldvalues);
-	put_pixel(fr);
 }
 
 static void		change_iter(int key, t_fr *fr)
@@ -57,7 +56,6 @@ static void		change_iter(int key, t_fr *fr)
 		fr->max_iter -= 100;
 	else if (key == PLUS && fr->max_iter < 400)
 		fr->max_iter += 100;
-	put_pixel(fr);
 }
 
 static void		change_color(int key, t_fr *fr)
@@ -68,7 +66,6 @@ static void		change_color(int key, t_fr *fr)
 		fr->color = 2;
 	else if (key == THREE)
 		fr->color = 3;
-	put_pixel(fr);
 }
 
 int				key_hooks(int key, void *fr_temp)
@@ -84,5 +81,8 @@ int				key_hooks(int key, void *fr_temp)
 		change_iter(key, fr);
 	else if (key == ONE || key == TWO || key == THREE)
 		change_color(key, fr);
+	else if (key == TAB)
+		fr->smooth = (fr->smooth == 1) ? 0 : 1;
+	put_pixel(fr);
 	return (0);
 }

@@ -16,8 +16,9 @@ static void	fr_name(t_fr *fr, int argc, char *name)
 {
 	if (argc != 2)
 	{
-		iferror("Invalid arguments!\n");
-
+		iferror("Usage:\nRun ./fractol \"fractal name\"\nfractals - \
+mandelbrot, burning ship, celtic mandelbrot, julia\nMoving - WASD\nColors - 1,\
+ 2, 3\nSmooth mode - TAB\nJulia pause - SPACE\n");
 	}
 	else if (ft_strequ("mandelbrot", name))
 		fr->name = 0;
@@ -52,6 +53,7 @@ static void	init(t_fr *fr)
 	fr->max_iter = 100;
 	fr->julia_k.re = FIRST;
 	fr->color = 1;
+	fr->smooth = 1;
 }
 
 int			main(int argc, char **argv)

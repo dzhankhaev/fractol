@@ -3,7 +3,7 @@
 #define C_IM	args[2]
 #define C_RE	args[3]
 
-static double	mandelbrot(double cre, double cim, int max_iter)
+static double	mandelbrot(double cre, double cim, int max_iter, int smooth)
 {
 	double	temp;
 	int		iter;
@@ -20,10 +20,15 @@ static double	mandelbrot(double cre, double cim, int max_iter)
 		zim = 2.0 * temp * zim + cim;
 		iter++;
 	}
+	if (iter == max_iter || iter == 0)
+		return (0);
+	if (smooth == 1)
+		return (((double)iter - log2(log2(zre * zre + zim * zim)) + 1.5)
+		/ (double)max_iter);
 	return ((double)iter / (double)max_iter);
 }
 
-static double	burning_ship(double cre, double cim, int max_iter)
+static double	burning_ship(double cre, double cim, int max_iter, int smooth)
 {
 	double	temp;
 	int		iter;
@@ -43,10 +48,16 @@ static double	burning_ship(double cre, double cim, int max_iter)
 		zim = -2.0 * temp + cim;
 		iter++;
 	}
+	if (iter == max_iter || iter == 0)
+		return (0);
+	if (smooth == 1)
+		return (((double)iter - log2(log2(zre * zre + zim * zim)) + 1.5)
+				/ (double)max_iter);
 	return ((double)iter / (double)max_iter);
 }
 
-static double	celtic_mandelbrot(double cre, double cim, int max_iter)
+static double	celtic_mandelbrot(double cre, double cim, int max_iter,
+		int smooth)
 {
 	double	temp;
 	int		iter;
@@ -65,10 +76,15 @@ static double	celtic_mandelbrot(double cre, double cim, int max_iter)
 		zre = temp + cre;
 		iter++;
 	}
+	if (iter == max_iter || iter == 0)
+		return (0);
+	if (smooth == 1)
+		return (((double)iter - log2(log2(zre * zre + zim * zim)) + 1.5)
+				/ (double)max_iter);
 	return ((double)iter / (double)max_iter);
 }
 
-static double	julia(double *args, int max_iter)
+static double	julia(double *args, int max_iter, int smooth)
 {
 	double	temp;
 	int		iter;
@@ -85,17 +101,22 @@ static double	julia(double *args, int max_iter)
 		zim = 2.0 * temp * zim + K_RE;
 		iter++;
 	}
+	if (iter == max_iter || iter == 0)
+		return (0);
+	if (smooth == 1)
+		return (((double)iter - log2(log2(zre * zre + zim * zim)) + 1.5)
+				/ (double)max_iter);
 	return ((double)iter / (double)max_iter);
 }
 
-double			fractal(double *args, int max_iter, int fr_id)
+double			iter_count(double *args, int max_iter, int fr_id, int smooth)
 {
 	if (fr_id == 0)
-		return (mandelbrot(C_RE, C_IM, max_iter));
+		return (mandelbrot(C_RE, C_IM, max_iter, smooth));
 	else if (fr_id == 1)
-		return (burning_ship(C_RE, C_IM, max_iter));
+		return (burning_ship(C_RE, C_IM, max_iter, smooth));
 	else if (fr_id == 2)
-		return (celtic_mandelbrot(C_RE, C_IM, max_iter));
+		return (celtic_mandelbrot(C_RE, C_IM, max_iter, smooth));
 	else if (fr_id == 3)
-		return (julia(args, max_iter));
+		return (julia(args, max_iter, smooth));
 }
