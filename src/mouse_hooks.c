@@ -18,7 +18,7 @@ int		mousemove_hook(int x, int y, void *fr_temp)
 	static int	c;
 
 	fr = (t_fr *)fr_temp;
-	if (fr->name == 3)
+	if (fr->name == 3 && fr->julia_stop == 1)
 	{
 		if (fr->julia_k.re == FIRST)
 			c = -1;

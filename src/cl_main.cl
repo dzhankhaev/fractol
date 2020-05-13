@@ -22,15 +22,15 @@ static void		color(int **line, double t, int color, int k)
 	}
 	else if (color == 2)
 	{
-		line[0][k + 2] = (int) (8.5 * (1 - t) * (1 - t) * (1 - t) * t * 255);
-		line[0][k + 1] = (int) (15 * (1 - t) * (1 - t) * t * t * 255);
+		line[0][k + 2] = (int) (9 * (1 - t) * t * t * t * 255);
+		line[0][k + 1] = (int) (9 * (1 - t) * t * t * t * 255);
 		line[0][k] = (int) (9 * (1 - t) * t * t * t * 255);
 	}
 	else if (color == 3)
 	{
-		line[0][k + 2] = (int) (15 * (1 - t) * (1 - t) * t * t * 255);
-		line[0][k + 1] = (int) (8.5 * (1 - t) * (1 - t) * (1 - t) * t * 255);
-		line[0][k] = (int) (9 * (1 - t) * t * t * t * 255);
+		line[0][k + 2] = (int) (8 * (1 - t) * t * t * t * 255);
+		line[0][k + 1] = (int) (2 * (1 - t) * (1 - t) * t * t * 255);
+		line[0][k] = (int) (6 * (1 - t) * t * t * t * 255);
 	}
 }
 

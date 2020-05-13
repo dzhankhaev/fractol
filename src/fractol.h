@@ -75,6 +75,7 @@ typedef struct			s_fr
 	int					name;
 	int					color;
 	int					smooth;
+	int					julia_stop;
 }						t_fr;
 
 int						key_hooks(int key, void *fr);

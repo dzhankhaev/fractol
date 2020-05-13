@@ -83,6 +83,8 @@ int				key_hooks(int key, void *fr_temp)
 		change_color(key, fr);
 	else if (key == TAB)
 		fr->smooth = (fr->smooth == 1) ? 0 : 1;
+	else if (key == SPACE)
+		fr->julia_stop = (fr->julia_stop == 1) ? 0 : 1;
 	put_pixel(fr);
 	return (0);
 }
