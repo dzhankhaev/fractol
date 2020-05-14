@@ -46,8 +46,8 @@ static int		check_down(t_fr *fr, t_point xy)
 	new_val[1].re = xy.re + (fr->min.re - xy.re) * zoom;
 	new_val[0].im = xy.im + (fr->max.im - xy.im) * zoom;
 	new_val[1].im = xy.im + (fr->min.im - xy.im) * zoom;
-	if (new_val[0].re > 5 || new_val[1].re < -5
-		|| new_val[0].im > 5 || new_val[1].im < -5)
+	if (new_val[0].re > 10 || new_val[1].re < -10
+		|| new_val[0].im > 10 || new_val[1].im < -10)
 		return (1);
 	return (0);
 }

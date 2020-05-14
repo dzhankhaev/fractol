@@ -6,14 +6,14 @@ void		set_arg_1(t_fr *fr)
 	cl_int	ret;
 
 	opcl = &fr->opcl;
-	opcl->mem_w_mi[0] = fr->width;
-	opcl->mem_w_mi[1] = fr->max_iter;
-	opcl->mem_w_mi[2] = fr->name;
-	opcl->mem_w_mi[3] = fr->color;
-	opcl->mem_w_mi[4] = fr->smooth;
-	ret = clEnqueueWriteBuffer(opcl->command_queue, opcl->memobj_w_mi, CL_TRUE,
-							   0, opcl->memlenth_w_mi * sizeof(cl_int),
-							   opcl->mem_w_mi, 0, NULL, NULL);
+	opcl->mem_param[0] = fr->width;
+	opcl->mem_param[1] = fr->max_iter;
+	opcl->mem_param[2] = fr->name;
+	opcl->mem_param[3] = fr->color;
+	opcl->mem_param[4] = fr->smooth;
+	ret = clEnqueueWriteBuffer(opcl->command_queue, opcl->memobj_param, CL_TRUE,
+							   0, opcl->memlenth_param * sizeof(cl_int),
+							   opcl->mem_param, 0, NULL, NULL);
 	if (ret != CL_SUCCESS)
 		iferror("ERROR init_arguments.c set_arg_1 clEnqueueWriteBuffer\n");
 }
@@ -24,17 +24,17 @@ void		init_arg_1(t_fr *fr)
 	t_opcl	*opcl;
 
 	opcl = &fr->opcl;
-	opcl->memlenth_w_mi = 5;
-	if (!(opcl->mem_w_mi = (cl_int *)malloc(sizeof(cl_int)
-										   * opcl->memlenth_w_mi)))
+	opcl->memlenth_param = 5;
+	if (!(opcl->mem_param = (cl_int *)malloc(sizeof(cl_int)
+										   * opcl->memlenth_param)))
 		iferror("ERROR init_arguments.c init_arg_1 malloc\n");
-	opcl->memobj_w_mi = clCreateBuffer(opcl->context, CL_MEM_READ_WRITE,
-			opcl->memlenth_w_mi * sizeof(cl_int), NULL, &ret);
+	opcl->memobj_param = clCreateBuffer(opcl->context, CL_MEM_READ_WRITE,
+			opcl->memlenth_param * sizeof(cl_int), NULL, &ret);
 	if (ret != CL_SUCCESS)
 		iferror("ERROR init_arguments.c init_arg_1 clCreateBuffer\n");
 	set_arg_1(fr);
 	ret = clSetKernelArg(opcl->kernel, 0, sizeof(cl_mem),
-						 (void *)&opcl->memobj_w_mi);
+						 (void *)&opcl->memobj_param);
 	if (ret != CL_SUCCESS)
 		iferror("ERROR init_arguments.c init_arg_1 clSetKernelArg\n");
 }

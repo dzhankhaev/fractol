@@ -1,8 +1,8 @@
-#define WIDTH		w_mi[0]
-#define MAX_ITER	w_mi[1]
-#define	FR_ID		w_mi[2]
-#define	COLOR		w_mi[3]
-#define	SMOOTH		w_mi[4]
+#define WIDTH		param[0]
+#define MAX_ITER	param[1]
+#define	FR_ID		param[2]
+#define	COLOR		param[3]
+#define	SMOOTH		param[4]
 #define MIN_RE		c[0]
 #define MAX_IM		c[1]
 #define F_RE		c[2]
@@ -28,13 +28,13 @@ static void		color(int **line, double t, int color, int k)
 	}
 	else if (color == 3)
 	{
-		line[0][k + 2] = (int) (8 * (1 - t) * t * t * t * 255);
-		line[0][k + 1] = (int) (2 * (1 - t) * (1 - t) * t * t * 255);
-		line[0][k] = (int) (6 * (1 - t) * t * t * t * 255);
+		line[0][k + 2] = (int) (10 * (1 - t) * (1 - t) * t * t * 255);
+		line[0][k + 1] = (int) (8.5 * (1 - t) * (1 - t) * (1 - t) * t * 255);
+		line[0][k] = (int) (9 * (1 - t) * (1 - t) * (1 - t) * t * 255);
 	}
 }
 
-__kernel void	calc_pix(__global int *w_mi, __global double *c,
+__kernel void	calc_pix(__global int *param, __global double *c,
 						  __global int *line)
 {
 	int		gid;

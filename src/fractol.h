@@ -38,9 +38,9 @@ typedef struct			s_opcl
 	cl_kernel			kernel;
 	cl_command_queue	command_queue;
 	cl_context			context;
-	cl_int				*mem_w_mi;
-	cl_mem				memobj_w_mi;
-	cl_int				memlenth_w_mi;
+	cl_int				*mem_param;
+	cl_mem				memobj_param;
+	cl_int				memlenth_param;
 	cl_double			*mem_c;
 	cl_mem				memobj_c;
 	cl_int				memlenth_c;

@@ -13,17 +13,10 @@
 #include "fractol.h"
 #include "key_defines.h"
 
-static void		destroy(t_fr *fr)
-{
-	mlx_destroy_window(fr->mlx, fr->win);
-	mlx_destroy_image(fr->mlx, fr->img);
-	exit(0);
-}
-
 static void		check_borders(t_fr *fr, t_point *oldvalues)
 {
-	if (fr->min.re < -5 || fr->max.re > 5 ||
-	        fr->min.im < -5 || fr->max.im > 5)
+	if (fr->min.re < -10 || fr->max.re > 10 ||
+	        fr->min.im < -10 || fr->max.im > 10)
 	{
 		fr->max = oldvalues[0];
 		fr->min = oldvalues[1];
@@ -74,7 +67,7 @@ int				key_hooks(int key, void *fr_temp)
 
 	fr = (t_fr *) fr_temp;
 	if (key == ESC)
-		destroy(fr);
+		exit(0);
 	else if (key == UP || key == DOWN || key == LEFT || key == RIGHT)
 		button_move(key, fr);
 	else if (key == MINUS || key == PLUS)

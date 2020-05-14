@@ -44,9 +44,9 @@ static void	free_all_alloc_mem(t_fr *fr)
 
 	opcl = &fr->opcl;
 	free(opcl->mem_tl);
-	free(opcl->mem_w_mi);
+	free(opcl->mem_param);
 	free(opcl->mem_c);
-	if ((clReleaseMemObject(opcl->memobj_w_mi)) != CL_SUCCESS)
+	if ((clReleaseMemObject(opcl->memobj_param)) != CL_SUCCESS)
 		iferror("ERROR put_pixel.c free_all_alloc_mem clReleaseMemObject1\n");
 	if ((clReleaseMemObject(opcl->memobj_c)) != CL_SUCCESS)
 		iferror("ERROR put_pixel.c free_all_alloc_mem clReleaseMemObject2\n");
