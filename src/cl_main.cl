@@ -1,8 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   fractol.h                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: abeulah <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/03/11 15:00:09 by abeulah           #+#    #+#             */
+/*   Updated: 2020/03/11 15:00:11 by abeulah          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #define WIDTH		param[0]
 #define MAX_ITER	param[1]
-#define	FR_ID		param[2]
-#define	COLOR		param[3]
-#define	SMOOTH		param[4]
+#define FR_ID		param[2]
+#define COLOR		param[3]
+#define SMOOTH		param[4]
 #define MIN_RE		c[0]
 #define MAX_IM		c[1]
 #define F_RE		c[2]

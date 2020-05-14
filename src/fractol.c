@@ -16,8 +16,8 @@ static void	fr_name(t_fr *fr, int argc, char *name)
 {
 	if (argc != 2)
 		iferror("Usage:\nRun ./fractol \"fractal name\"\nfractals - \
-mandelbrot, burning_ship, celtic_mandelbrot, julia\nMoving - WASD\nColors - 1,\
- 2, 3\nSmooth mode - TAB\nJulia pause - SPACE\n");
+mandelbrot, burning_ship, celtic_mandelbrot, julia\nMoving - WASD\nColors - 1, \
+2, 3\nSmooth mode - TAB\nJulia pause - SPACE\n");
 	else if (ft_strequ("mandelbrot", name))
 		fr->name = 0;
 	else if (ft_strequ("burning_ship", name))
@@ -28,8 +28,8 @@ mandelbrot, burning_ship, celtic_mandelbrot, julia\nMoving - WASD\nColors - 1,\
 		fr->name = 3;
 	else
 		iferror("Usage:\nRun ./fractol \"fractal name\"\nfractals - \
-mandelbrot, burning_ship, celtic_mandelbrot, julia\nMoving - WASD\nColors - 1,\
- 2, 3\nSmooth mode - TAB\nJulia pause - SPACE\n");
+mandelbrot, burning_ship, celtic_mandelbrot, julia\nMoving - WASD\nColors - 1, \
+2, 3\nSmooth mode - TAB\nJulia pause - SPACE\n");
 }
 
 static void	init(t_fr *fr)

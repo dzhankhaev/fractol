@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   fractol.h                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: abeulah <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/03/11 15:00:09 by abeulah           #+#    #+#             */
+/*   Updated: 2020/03/11 15:00:11 by abeulah          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "fractol.h"
 
 static void		free_tab(char **tab, int n)
@@ -15,7 +27,7 @@ static void		free_tab(char **tab, int n)
 
 static void		read_cl_files(t_opcl *opcl)
 {
-	char				buf[3000];
+	char				buf[3700];
 	char				**source_str;
 	int					source_length;
 	int					fd;
@@ -25,13 +37,13 @@ static void		read_cl_files(t_opcl *opcl)
 		iferror("ERROR init_opcl.c read_cl_files malloc\n");
 	if ((fd = open("src/cl_main.cl", O_RDONLY)) < 1)
 		iferror("ERROR init_opcl.c read_cl_files open1\n");
-	source_length = read(fd, buf, 2000);
+	source_length = read(fd, buf, 2500);
 	close(fd);
 	if (!(source_str[0] = ft_copy(buf, source_length)))
 		iferror("ERROR init_opcl.c read_cl_files ft_copy1\n");
 	if ((fd = open("src/cl_fractals.cl", O_RDONLY)) < 1)
 		iferror("ERROR init_opcl.c read_cl_files open2\n");
-	source_length = read(fd, buf, 3000);
+	source_length = read(fd, buf, 3700);
 	close(fd);
 	if (!(source_str[1] = ft_copy(buf, source_length)))
 		iferror("ERROR init_opcl.c read_cl_files ft_copy2\n");
@@ -48,7 +60,7 @@ static void		create_kernel(t_opcl *opcl, cl_device_id device_id)
 
 	read_cl_files(opcl);
 	if ((ret = clBuildProgram(opcl->program, 1, &device_id, NULL,
-							  NULL, NULL)) != CL_SUCCESS)
+			NULL, NULL)) != CL_SUCCESS)
 		iferror("ERROR init_opcl.c create_kernel clBuildProgram\n");
 	opcl->kernel = clCreateKernel(opcl->program, "calc_pix", &ret);
 	if (ret != CL_SUCCESS)

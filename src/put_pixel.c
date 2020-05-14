@@ -23,7 +23,7 @@ static void	display_pix(t_fr *fr)
 	y = 0;
 	while (y < fr->height)
 	{
-		temp = (char *) (fr->line + (y * 4 * fr->width));
+		temp = (char *)(fr->line + (y * 4 * fr->width));
 		x = 0;
 		while (x < fr->width * 4)
 		{
@@ -70,7 +70,7 @@ void		put_pixel(t_fr *fr)
 	if (ret != CL_SUCCESS)
 		iferror("ERROR put_pixel.c put_pixel clEnqueueNDRangeKernel\n");
 	ret = clEnqueueReadBuffer(opcl->command_queue,
-			opcl->memobj_tl, CL_TRUE, 0, opcl->memlenth_tl* sizeof(cl_int),
+			opcl->memobj_tl, CL_TRUE, 0, opcl->memlenth_tl * sizeof(cl_int),
 			opcl->mem_tl, 0, NULL, NULL);
 	if (ret != CL_SUCCESS)
 		iferror("ERROR put_pixel.c put_pixel clEnqueueReadBuffer\n");

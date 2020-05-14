@@ -31,7 +31,7 @@ void	iferror(char *s)
 	exit(0);
 }
 
-int			ft_strequ(char *s, char *ss)
+int		ft_strequ(char *s, char *ss)
 {
 	int		i;
 

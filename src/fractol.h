@@ -30,8 +30,6 @@
 # include <math.h>
 # include "../minilibx/mlx.h"
 
-#include <stdio.h>
-
 typedef struct			s_opcl
 {
 	cl_program			program;

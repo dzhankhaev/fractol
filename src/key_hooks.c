@@ -16,7 +16,7 @@
 static void		check_borders(t_fr *fr, t_point *oldvalues)
 {
 	if (fr->min.re < -10 || fr->max.re > 10 ||
-	        fr->min.im < -10 || fr->max.im > 10)
+		fr->min.im < -10 || fr->max.im > 10)
 	{
 		fr->max = oldvalues[0];
 		fr->min = oldvalues[1];
@@ -65,7 +65,7 @@ int				key_hooks(int key, void *fr_temp)
 {
 	t_fr *fr;
 
-	fr = (t_fr *) fr_temp;
+	fr = (t_fr *)fr_temp;
 	if (key == ESC)
 		exit(0);
 	else if (key == UP || key == DOWN || key == LEFT || key == RIGHT)
