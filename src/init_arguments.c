@@ -12,7 +12,7 @@
 
 #include "fractol.h"
 
-void		set_arg_1(t_fr *fr)
+static void	set_arg_1(t_fr *fr)
 {
 	t_opcl	*opcl;
 	cl_int	ret;
@@ -51,7 +51,7 @@ void		init_arg_1(t_fr *fr)
 		iferror("ERROR init_arguments.c init_arg_1 clSetKernelArg\n");
 }
 
-void		set_arg_2(t_fr *fr)
+static void	set_arg_2(t_fr *fr)
 {
 	t_opcl	*opcl;
 	cl_int	ret;

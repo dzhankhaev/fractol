@@ -65,6 +65,6 @@ char	*ft_copy(char *buf, int length)
 
 void	set_new_values(double *a, double *b, double d)
 {
-	*a += d * 0.05;
-	*b += d * 0.05;
+	*a += d;
+	*b += d;
 }

@@ -77,11 +77,8 @@ int				mouse_hooks(int button, int x, int y, void *fr_temp)
 	fr = (t_fr *)fr_temp;
 	if (button == 4 || button == 5)
 	{
-		xy = create_cmplx(
-				(double)x / (fr->width / (fr->max.re - fr->min.re))
-				+ fr->min.re,
-				(double)y / (fr->height / (fr->max.im - fr->min.im))
-				* -1 + fr->max.im);
+		xy = create_cmplx(fr->min.re + (double)x * fr->f.re, fr->max.im -
+				(double)y * fr->f.im);
 		zoom = set_zoom(button, fr, xy);
 		fr->max.re = xy.re + (fr->max.re - xy.re) * zoom;
 		fr->min.re = xy.re + (fr->min.re - xy.re) * zoom;

@@ -30,8 +30,8 @@ static void		button_move(int key, t_fr *fr)
 
 	oldvalues[0] = create_cmplx(fr->max.re, fr->max.im);
 	oldvalues[1] = create_cmplx(fr->min.re, fr->min.im);
-	d = create_cmplx(fabs(fr->max.re - fr->min.re),
-			fabs(fr->max.im - fr->min.im));
+	d = create_cmplx(fabs(fr->max.re - fr->min.re) * 0.05,
+			fabs(fr->max.im - fr->min.im) * 0.05);
 	if (key == LEFT)
 		set_new_values(&fr->min.re, &fr->max.re, d.re * -1);
 	else if (key == RIGHT)

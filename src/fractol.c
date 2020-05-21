@@ -16,8 +16,8 @@ static void	fr_name(t_fr *fr, int argc, char *name)
 {
 	if (argc != 2)
 		iferror("Usage:\nRun ./fractol \"fractal name\"\nfractals - \
-mandelbrot, burning_ship, celtic_mandelbrot, julia\nMoving - WASD\nColors - 1, \
-2, 3\nSmooth mode - TAB\nJulia pause - SPACE\n");
+mandelbrot, burning_ship, celtic_mandelbrot, julia\nMoving - WASD\nChange max. \
+iterations +, -\nColors - 1, 2, 3\nSmooth mode - TAB\nJulia pause - SPACE\n");
 	else if (ft_strequ("mandelbrot", name))
 		fr->name = 0;
 	else if (ft_strequ("burning_ship", name))
@@ -28,8 +28,8 @@ mandelbrot, burning_ship, celtic_mandelbrot, julia\nMoving - WASD\nColors - 1, \
 		fr->name = 3;
 	else
 		iferror("Usage:\nRun ./fractol \"fractal name\"\nfractals - \
-mandelbrot, burning_ship, celtic_mandelbrot, julia\nMoving - WASD\nColors - 1, \
-2, 3\nSmooth mode - TAB\nJulia pause - SPACE\n");
+mandelbrot, burning_ship, celtic_mandelbrot, julia\nMoving - WASD\nChange max. \
+iterations +, -\nColors - 1, 2, 3\nSmooth mode - TAB\nJulia pause - SPACE\n");
 }
 
 static void	init(t_fr *fr)
@@ -47,9 +47,7 @@ static void	init(t_fr *fr)
 	fr->endian = 0;
 	fr->line = mlx_get_data_addr(fr->img, &fr->bpp, &fr->size, &fr->endian);
 	fr->min = create_cmplx(-2.0, -2.0);
-	fr->max.re = 2;
-	fr->max.im = fr->min.im + (fr->max.re - fr->min.re)
-			* fr->height / fr->width;
+	fr->max = create_cmplx(2.0, 2.0);
 	fr->f = create_cmplx((fr->max.re - fr->min.re) / (fr->width - 1),
 			(fr->max.im - fr->min.im) / (fr->height - 1));
 	fr->max_iter = 100;
@@ -66,6 +64,7 @@ int			main(int argc, char **argv)
 	fr_name(&fr, argc, argv[1]);
 	init(&fr);
 	init_opcl(&fr);
+	put_pixel(&fr);
 	mlx_hook(fr.win, 6, 1L << 6, mousemove_hook, (void *)&fr);
 	mlx_key_hook(fr.win, key_hooks, (void *)&fr);
 	mlx_mouse_hook(fr.win, mouse_hooks, (void *)&fr);

@@ -14,19 +14,13 @@
 
 # define FRACTOL_H
 
-# define CL_USE_DEPRECATED_OPENCL_1_0_APIS
-# define CL_USE_DEPRECATED_OPENCL_1_1_APIS
 # define CL_USE_DEPRECATED_OPENCL_1_2_APIS
-# define CL_USE_DEPRECATED_OPENCL_2_0_APIS
-# define CL_USE_DEPRECATED_OPENCL_2_1_APIS
-# define CL_USE_DEPRECATED_OPENCL_3_0_APIS
 # define FIRST	-1
 
 # include <CL/cl.h>
 # include <fcntl.h>
 # include <unistd.h>
 # include <stdlib.h>
-# include <stdio.h>
 # include <math.h>
 # include "../minilibx/mlx.h"
 
@@ -93,8 +87,6 @@ void					init_opcl(t_fr *fr);
 
 void					init_arg_1(t_fr *fr);
 void					init_arg_2(t_fr *fr);
-void					set_arg_1(t_fr *fr);
-void					set_arg_2(t_fr *fr);
 void					init_arg_3(t_fr *fr);
 
 #endif

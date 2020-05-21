@@ -58,7 +58,6 @@ static void		create_kernel(t_opcl *opcl, cl_device_id device_id)
 {
 	cl_int				ret;
 
-	read_cl_files(opcl);
 	if ((ret = clBuildProgram(opcl->program, 1, &device_id, NULL,
 			NULL, NULL)) != CL_SUCCESS)
 		iferror("ERROR init_opcl.c create_kernel clBuildProgram\n");
@@ -87,5 +86,6 @@ void			init_opcl(t_fr *fr)
 			device_id, 0, &ret);
 	if (ret != CL_SUCCESS)
 		iferror("ERROR init_opcl.c init_opcl clCreateCommandQueue\n");
+	read_cl_files(opcl);
 	create_kernel(opcl, device_id);
 }
